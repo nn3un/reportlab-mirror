@@ -966,7 +966,7 @@ class BarChart3D(BarChart):
         fg_value = fg.value()
         cAStyle = self.categoryAxis.style
         if cAStyle=='stacked':
-            fg_value=fg_value.reverse()
+            fg_value.reverse()
         elif cAStyle=='mixed':
             fg_value = [_[1] for _ in sorted((((t[1],t[2],t[3],t[4]),t) for t in fg_value))]
 
@@ -979,7 +979,7 @@ class BarChart3D(BarChart):
                             strokeColor=style.strokeColor, strokeWidth=style.strokeWidth,
                             shading=0.45)
         for t in fg_value:
-            if t==1:
+            if t[0]==1:
                 z0,z1,x,y,width,height,rowNo,colNo = t[1:]
                 BarChart._addBarLabel(self,g,rowNo,colNo,x,y,width,height)
         return g
