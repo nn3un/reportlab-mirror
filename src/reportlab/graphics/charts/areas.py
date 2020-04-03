@@ -9,7 +9,7 @@ from reportlab.lib.validators import isNumber, isColor, isColorOrNone, isNoneOrS
 from reportlab.graphics.widgetbase import Widget
 from reportlab.graphics.shapes import Rect, Group, Line, Polygon
 from reportlab.lib.attrmap import AttrMap, AttrMapValue
-from reportlab.lib.colors import grey
+from reportlab.lib.colors import grey, Blacker
 
 class PlotArea(Widget):
     "Abstract base class representing a chart's plot area, pretty unusable by itself."
@@ -68,7 +68,6 @@ class PlotArea(Widget):
                 if _3d_dy is not None:
                     _3d_dx = self._3d_dx
                     if fillColor and not strokeColor:
-                        from reportlab.lib.colors import Blacker
                         c = Blacker(fillColor, getattr(self,'_3d_blacken',0.7))
                     else:
                         c = strokeColor
